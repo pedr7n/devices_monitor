@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+  /* ===== Barra de busca ===== */
+  .search-box {
+    display: flex;
+    justify-content: center;
+    margin: 30px auto;
+    max-width: 600px;
+    gap: 10px;
+  }
+
+  .search-box input {
+    flex: 1;
+    padding: 12px 15px;
+    font-size: 15px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg-alt);
+    color: var(--text);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .search-box input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 6px rgba(0,0,0,0.1);
+    outline: none;
+  }
+
+  .search-box button {
+    padding: 12px 20px;
+    background: var(--primary);
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+
+  .search-box button:hover {
+    background: var(--primary-hover);
+  }
+
+  /* ===== Grid ===== */
+  .device-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto 50px auto;
+  }
+
+  /* ===== Cards ===== */
+  .device-card {
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: left;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .device-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+    cursor: pointer;
+  }
+
+  .device-card h2 {
+    font-size: 1.2rem;
+    margin-bottom: 6px;
+    color: var(--text);
+  }
+
+  .device-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+  }
+
+  .device-card .tag {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: var(--primary);
+    color: #fff;
+  }
+
+  /* ===== Mensagem sem resultado ===== */
+  .no-results {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-top: 40px;
+  }
+</style>
+
+<!-- Barra de busca -->
+<form method="GET" action="{% url 'devices_list' %}" class="search-box">
+  <input type="text" name="search" placeholder="🔍 Buscar dispositivo...">
+  <button type="submit">Buscar</button>
+</form>
+
+<!-- Grid de devices -->
+<div class="device-grid">
+  {% if devices %}
+    {% for device in devices %}
+      <div class="device-card">
+        <h2>{{ device.brand }} {{ device.product }}</h2>
+        <p>{{ device.description|default:"Sem descrição disponível" }}</p>
+        <span class="tag">{{ device.category|default:"Sem categoria" }}</span>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p class="no-results">Nenhum dispositivo encontrado.</p>
+  {% endif %}
+</div>
+{% endblock %}
