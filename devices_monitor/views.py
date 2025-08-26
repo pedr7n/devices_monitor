@@ -1,24 +1,28 @@
-from django.views.generic import ListView, CreateView, DeleteView
-from devices_monitor.models import Product, Device
-from devices_monitor.forms import ProductModelForm
+from django.views.generic import ListView, CreateView, DeleteView, UpdateView
+from django.urls import reverse_lazy
+from devices_monitor.models import Product, Device, Category, Organization, Brand
+from devices_monitor.forms import ProductForm
 
 # Create your views here.
 
-class DevicesListView(ListView):
-    model = Device
-    template_name = 'index.html'
-    context_object_name = 'device'
+class CategoryListView(ListView):
+    model = Category
+    template_name = "categories/category_list.html"
+    context_object_name = "categories"
 
-    def get_queryset(self):
-        device = super().get_queryset().order_by('product')
-        search = self.request.GET.get('search')
-        if search:
-            device = device.filter(model__icontains=search)
-        return device
+class CategoryCreateView(CreateView):
+    model = Category
+    fields = ["name"]
+    template_name = "categories/category_form.html"
+    success_url = reverse_lazy("category_list")
 
-class CreateDevice(CreateView):
-    model = Product
-    form_class = ProductModelForm
-    template_name = 'new_device.html'
-    success_url = '/devices/'
+class CategoryUpdateView(UpdateView):
+    model = Category
+    fields = ["name"]
+    template_name = "categories/category_form.html"
+    success_url = reverse_lazy("category_list")
 
+class CategoryDeleteView(DeleteView):
+    model = Category
+    template_name = "categories/category_confirm_delete.html"
+    success_url = reverse_lazy("category_list")
