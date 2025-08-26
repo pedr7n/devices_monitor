@@ -19,6 +19,6 @@ class DevicesListView(ListView):
 class CreateDevice(CreateView):
     model = Product
     form_class = ProductModelForm
-    template_name = 'index.html'
+    template_name = 'new_device.html'
     success_url = '/devices/'
 
