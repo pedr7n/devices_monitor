@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <h1 class="page-title">devices</h1>
+  
+  <a href="{% url 'new_device' %}" class="btn btn-primary">+ Add Device</a>
+  
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for device in device_list %}
+        <tr>
+          <td>{{ device.name }}</td>
+          <td>
+            <a href="{% url 'new_device' device.id %}" class="btn btn-sm">View</a>
+            <a href="{% url 'device_update' device.id %}" class="btn btn-sm btn-secondary">Edit</a>
+            <a href="{% url 'device_delete' device.id %}" class="btn btn-sm btn-danger">Delete</a>
+          </td>
+        </tr>
+      {% empty %}
+        <tr><td colspan="2">No devices found.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

@@ -24,5 +24,24 @@ class CategoryUpdateView(UpdateView):
 
 class CategoryDeleteView(DeleteView):
     model = Category
-    template_name = "categories/category_confirm_delete.html"
+    template_name = "categories/remove_category.html"
     success_url = reverse_lazy("category_list")
+
+class DeviceListView(ListView):
+    model = Device
+    template_name = "devices/device_list.html"
+    context_object_name = "devices"
+
+class DeviceCreateView(CreateView):
+    model = Device
+    template_name = "devices/new_device.html"
+    success_url = reverse_lazy("device_list")
+
+class DeviceUpdateView(UpdateView):
+    model = Device
+    template_name = "devices/new_device.html"
+    success_url = reverse_lazy("device_list")
+
+class DeviceDeleteView(DeleteView):
+    model = Device
+    template_name = "devices/remove_device.html"

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <h1 class="page-title">Brands</h1>
+  
+  <a href="{% url 'brand_create' %}" class="btn btn-primary">+ Add Brand</a>
+  
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for brand in object_list %}
+        <tr>
+          <td>{{ brand.name }}</td>
+          <td>
+            <a href="{% url 'brand_detail' brand.id %}" class="btn btn-sm">View</a>
+            <a href="{% url 'brand_update' brand.id %}" class="btn btn-sm btn-secondary">Edit</a>
+            <a href="{% url 'brand_delete' brand.id %}" class="btn btn-sm btn-danger">Delete</a>
+          </td>
+        </tr>
+      {% empty %}
+        <tr><td colspan="2">No brands found.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

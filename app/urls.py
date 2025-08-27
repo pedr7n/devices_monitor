@@ -17,14 +17,14 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
-from devices_monitor.views import DevicesListView, CreateDevice
+from devices_monitor.views import DeviceListView, DeviceCreateView
 from accounts.views import logout_view, login_view, register_view
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("devices/", DevicesListView.as_view(), name='devices_list'),
+    path("devices/", DeviceListView.as_view(), name='devices_list'),
     path('register/', register_view, name='register'),
     path('login/', login_view, name='login'),
     path('logout/', logout_view, name='logout'),
-    path('new_device/', CreateDevice.as_view(), name='new_device'),
+    path('new_device/', DeviceCreateView.as_view(), name='new_device'),
 ]
