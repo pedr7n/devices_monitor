@@ -52,6 +52,7 @@ Aplicação Django para **monitoramento de equipamentos Meraki**, com suporte a 
 ### 1. Clonar o projeto
 
 git clone https://github.com/pedr7n/devices_monitor.git
+
 cd devices_monitor
 
 ### 2. Ativar ambiente virtual
