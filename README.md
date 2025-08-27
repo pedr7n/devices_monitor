@@ -1,4 +1,4 @@
-# ⚡ MyDevices - Monitoramento de Equipamentos
+# ⚡ Devices_monitor - Monitoramento de Equipamentos
 
 Aplicação Django para **monitoramento de equipamentos Meraki**, com suporte a CRUD completo e autenticação.
 
@@ -51,8 +51,8 @@ Aplicação Django para **monitoramento de equipamentos Meraki**, com suporte a 
 
 ### 1. Clonar o projeto
 
-git clone https://github.com/seu-usuario/mydevices.git
-cd mydevices
+git clone https://github.com/pedr7n/devices_monitor.git
+cd devices_monitor
 
 ### 2. Ativar ambiente virtual
 
