@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Novo Dispositivo{% endblock %}
+{% block title %}Novo Produto{% endblock %}
 {% block content %}
 <style>
   .form-container {
@@ -92,7 +92,7 @@
 </style>
 
 <div class="form-container">
-  <h1>Registrar Novo Dispositivo</h1>
+  <h1>Registrar Novo Produto</h1>
   <form method="POST">
     {% csrf_token %}
     {{ form.non_field_errors }}
@@ -108,7 +108,7 @@
     {% endfor %}
 
     <div class="form-actions">
-      <a href="{% url 'devices_list' %}" class="btn-cancel">Cancelar</a>
+      <a href="{% url 'device_list' %}" class="btn-cancel">Cancelar</a>
       <button type="submit" class="btn-submit">Salvar</button>
     </div>
   </form>

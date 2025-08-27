@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h3 class="mb-3">{{ device.product.name }}</h3>
+      
+      <ul class="list-unstyled">
+        <li><strong>Organization:</strong> {{ device.organization.name }}</li>
+        <li><strong>Category:</strong> {{ device.category.name }}</li>
+        <li><strong>Serial:</strong> {{ device.serial }}</li>
+        <li><strong>MAC Address:</strong> {{ device.mac_address }}</li>
+        <li><strong>Local:</strong> {{ device.local }}</li>
+        <li><strong>Admin:</strong> {{ device.admin }}</li>
+        <li><strong>License:</strong> {{ device.license }}</li>
+        <li><strong>Days Until Expiration:</strong> {{ device.days_until_expiration }}</li>
+      </ul>
+
+      <div class="mt-3 d-flex gap-2">
+        <a href="{% url 'device_update' device.id %}" class="btn btn-secondary">Edit</a>
+        <a href="{% url 'device_delete' device.id %}" class="btn btn-danger">Delete</a>
+        <a href="{% url 'device_list' %}" class="btn btn-light">Back to list</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

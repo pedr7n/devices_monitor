@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+  <h1 class="mb-4">Dashboard</h1>
+
+  <!-- Cards com estatísticas -->
+  <div class="row text-center mb-5">
+    <div class="col-md-2 col-6 mb-3">
+      <a href="{% url 'device_list' %}" class="text-decoration-none">
+        <div class="card shadow-sm border-0 hover-card">
+          <div class="card-body">
+            <h2 class="fw-bold text-primary">{{ device_count }}</h2>
+            <p class="text-muted mb-0">Devices</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-md-2 col-6 mb-3">
+      <a href="{% url 'product_list' %}" class="text-decoration-none">
+        <div class="card shadow-sm border-0 hover-card">
+          <div class="card-body">
+            <h2 class="fw-bold text-success">{{ product_count }}</h2>
+            <p class="text-muted mb-0">Products</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-md-2 col-6 mb-3">
+      <a href="{% url 'brand_list' %}" class="text-decoration-none">
+        <div class="card shadow-sm border-0 hover-card">
+          <div class="card-body">
+            <h2 class="fw-bold text-info">{{ brand_count }}</h2>
+            <p class="text-muted mb-0">Brands</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-md-2 col-6 mb-3">
+      <a href="{% url 'category_list' %}" class="text-decoration-none">
+        <div class="card shadow-sm border-0 hover-card">
+          <div class="card-body">
+            <h2 class="fw-bold text-warning">{{ category_count }}</h2>
+            <p class="text-muted mb-0">Categories</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-md-2 col-6 mb-3">
+      <a href="{% url 'organization_list' %}" class="text-decoration-none">
+        <div class="card shadow-sm border-0 hover-card">
+          <div class="card-body">
+            <h2 class="fw-bold text-danger">{{ organization_count }}</h2>
+            <p class="text-muted mb-0">Organizations</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Últimos Devices -->
+  <div class="card shadow-sm">
+    <div class="card-header bg-primary text-white">
+      Últimos Devices Cadastrados
+    </div>
+    <div class="card-body p-0">
+      <table class="table mb-0">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Organization</th>
+            <th>Category</th>
+            <th>MAC</th>
+            <th>Local</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for device in recent_devices %}
+          <tr>
+            <td>{{ device.product.name }}</td>
+            <td>{{ device.organization.name }}</td>
+            <td>{{ device.category.name }}</td>
+            <td>{{ device.mac_address }}</td>
+            <td>{{ device.local }}</td>
+          </tr>
+          {% empty %}
+          <tr>
+            <td colspan="5" class="text-center text-muted">Nenhum device cadastrado.</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<style>
+  .hover-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .hover-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+  }
+</style>
+{% endblock %}
