@@ -144,12 +144,18 @@
 <body>
   <header>
     <nav>
-      <a href="{% url 'device_list' %}" class="logo">⚡ MyDevices</a>
+      {% if user.is_authenticated %}
+        <a href="{% url 'home' %}" class="logo">⚡ MyDevices</a>
+      {% else %}
+        <a href="{% url 'login' %}" class="logo">⚡ MyDevices</a>
+      {% endif %}
+
       <div class="menu">
-        <a href="{% url 'device_list' %}">Devices</a>
         {% if user.is_authenticated %}
           <span>Olá, {{ user.username }}</span>
+          <a href="{% url 'home' %}" class="btn-custom">🏠 Home</a>
           <a href="{% url 'device_form' %}" class="btn-custom">+ Novo Device</a>
+          <a href="{% url 'product_form' %}" class="btn-custom">+ Novo Produto</a>
           <a href="{% url 'logout' %}">Logout</a>
         {% else %}
           <a href="{% url 'register' %}">Sign up</a>
