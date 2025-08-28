@@ -55,7 +55,7 @@ class Device(models.Model):
     admin = models.CharField(max_length=100, null=True)
     activation_flag = models.BooleanField(null=True)
     license = models.CharField(null=True, unique=True, max_length=100)
-    days_until_expiration = models.IntegerField(blank=True, null=True)    
+    days_until_expiration = models.IntegerField(blank=True, null=True)
     
 
 
