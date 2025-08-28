@@ -31,7 +31,7 @@ class Product(models.Model):
 class Organization(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
-    meraki_id = models.IntegerField(blank=True, null=True)
+    meraki_id = models.CharField(blank=True, null=True)
     address = models.CharField(max_length=200)
     cnpj = models.CharField(max_length=14, unique=True, default='Vazio')
     account_manager = models.CharField(max_length=100, null=True)

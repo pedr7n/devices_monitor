@@ -4,7 +4,7 @@ from devices_monitor.models import Brand, Category, Product, Organization, Devic
 
 # Register your models here.
 
-class deviceAdmin(admin.ModelAdmin):
+class DeviceAdmin(admin.ModelAdmin):
     list_display = ('product', 'organization', 'category', 'serial', 'mac_address', 'local', 'admin', 'activation_flag', 'days_until_expiration')
     search_fields = ['product']
 
@@ -31,4 +31,4 @@ admin.site.register(Product, ProductAdmin)
 admin.site.register(Brand, BrandAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Organization, OrganizationAdmin)
-admin.site.register(Device, deviceAdmin)
+admin.site.register(Device, DeviceAdmin)
