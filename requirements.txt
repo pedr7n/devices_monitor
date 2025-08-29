@@ -52,7 +52,6 @@ pyflakes==3.3.2
 Pygments==2.18.0
 pymongo==4.6.1
 pyproject_hooks==1.2.0
-pytest==8.3.3
 python-dateutil==2.8.2
 python-dotenv==1.0.1
 pytz==2025.2
